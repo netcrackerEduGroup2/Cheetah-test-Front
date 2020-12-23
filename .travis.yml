@@ -16,7 +16,7 @@ install:
 
 addons:
   sonarcloud:
-    organization: "netcrackergroup2"
+    organization: "netcrackeredugroup2"
     token: $SONARCLOUD_SECURED_TOKEN
 script:
 - sonar-scanner
