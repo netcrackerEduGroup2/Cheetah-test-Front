@@ -68,7 +68,7 @@ export class TestCaseListComponent implements OnInit {
       this.searchValue
     ).pipe(take(1))
       .subscribe(data => {
-          this.testCases = data.testCaseList;
+          this.testCases = data.elements;
           this.totalElements = data.totalElements;
         }
       );
@@ -79,7 +79,7 @@ export class TestCaseListComponent implements OnInit {
       .getTestCases(this.projectId, this.pageNum, this.pageSize)
       .pipe(take(1))
       .subscribe(data => {
-        this.testCases = data.testCaseList;
+        this.testCases = data.elements;
         this.totalElements = data.totalElements;
       });
   }

@@ -56,7 +56,7 @@ export class TestCaseService {
   }
 
   runTestCases(runTestCaseIdsList: number[]): Observable<any> {
-    const url = `${environment.apiUrl}/api/run-test-cases`;
+    const url = `${environment.apiUrl}/api/test-cases/run`;
     const testCaseDto: TestCaseDto = new TestCaseDto(runTestCaseIdsList);
     return this.http.post<any>(url, testCaseDto).pipe(
       catchError(error => {
@@ -67,6 +67,6 @@ export class TestCaseService {
 }
 
 interface GetResponseTestCases {
-  testCaseList: TestCase[];
+  elements: TestCase[];
   totalElements: number;
 }
