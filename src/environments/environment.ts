@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://cheetah-test-backend-dev.herokuapp.com',
-  wsUrl: 'ws://cheetah-test-backend-dev.herokuapp.com',
+  wsUrl: 'wss://cheetah-test-backend-dev.herokuapp.com',
   // apiUrl: 'http://localhost:8080',
   // wsUrl: 'ws://localhost:8080',
   invalidEmail: 'invalid.email',
