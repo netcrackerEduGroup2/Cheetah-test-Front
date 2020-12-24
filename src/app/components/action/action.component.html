@@ -19,16 +19,16 @@
 <div class="mt-5 row" *ngIf="actions.length !== 0">
   <div class="custom-table black">
     <div class="row thead">
-      <div class="col-2">Title</div>
-      <div class="col-4">Description</div>
-      <div class="col-2">Type</div>
+      <div class="col-3">Title</div>
+      <div class="col-5">Description</div>
+      <div class="col-3">Type</div>
       <div class="col-2">Options</div>
     </div>
 
     <div class="mt-5 stripped">
       <div class="row mt-2" *ngFor="let action of actions">
-        <div class="col-2">{{action.title}}</div>
-        <div class="col-4">{{action.description}}</div>
+        <div class="col-3">{{action.title}}</div>
+        <div class="col-5">{{action.description}}</div>
         <div class="col-2">{{action.type}}</div>
         <div class="col-2 pt-2">
           <button class="options-table" (click)="edit(action.id)">

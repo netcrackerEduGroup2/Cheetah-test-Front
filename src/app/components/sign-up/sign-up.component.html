@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1 class="text-center display-4 h1-black">Admin panel</h1>
+  <h1 class="display-4 h1-black">Admin panel</h1>
   <div class="forms_container">
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="user_form">
       <div class="form_title">
@@ -65,19 +65,6 @@
       </button>
 
     </form>
-
-    <div class="delete_user_form">
-      <div class="form_title">
-        <h1 class="signUp_text">Delete User</h1>
-      </div>
-      <div class="form_item">
-        <label>Username:</label>
-        <input type="text">
-      </div>
-      <div class="form_item">
-        <input type="submit" value="Delete">
-      </div>
-    </div>
   </div>
 </div>
 
