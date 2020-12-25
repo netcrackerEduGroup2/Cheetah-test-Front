@@ -45,6 +45,15 @@ export class TestCaseService {
     return this.http.get<TestCase>(url);
   }
 
+  findTestCaseByResultAndTitle(projectId: number,
+                               pageNum: number,
+                               pageSize: number,
+                               result: string,
+                               keyword: string): Observable<GetResponseTestCases> {
+    const url = `${environment.apiUrl}/api/projects/${projectId}/test-cases/search/findByTitleAndResult?page=${pageNum}&size=${pageSize}&result=${result}&keyword=${keyword}`;
+    return this.http.get<GetResponseTestCases>(url);
+  }
+
   findTestCaseByTitle(projectId: number, pageNum: number, pageSize: number, keyword: string): Observable<GetResponseTestCases> {
     const url = `${environment.apiUrl}/api/projects/${projectId}/test-cases/search/findByTitle?page=${pageNum}&size=${pageSize}&keyword=${keyword}`;
     return this.http.get<GetResponseTestCases>(url);

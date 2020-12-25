@@ -8,16 +8,17 @@ import {Project} from '../../../models/project/entity/project';
 
 import * as $ from 'jquery';
 
-
 @Component({
   selector: 'app-testcase',
   templateUrl: './test-case-list.component.html',
   styleUrls: ['./test-case-list.component.css']
 })
 export class TestCaseListComponent implements OnInit {
-
   testCases: TestCase[] = [];
   runTestCaseIdsList: number[] = [];
+  filters = ['CREATED', 'COMPLETE', 'FAILED'];
+  selectedFilter = 'Filter by';
+  filterResult: string;
 
   projectId: number;
   currentProject: Project;
@@ -61,27 +62,53 @@ export class TestCaseListComponent implements OnInit {
   }
 
   private handleSearchTestCases(): void {
-    this.testCaseService.findTestCaseByTitle(
-      this.projectId,
-      this.pageNum,
-      this.pageSize,
-      this.searchValue
-    ).pipe(take(1))
-      .subscribe(data => {
-          this.testCases = data.elements;
-          this.totalElements = data.totalElements;
-        }
-      );
+    if (!this.filterResult) {
+      this.testCaseService.findTestCaseByTitle(
+        this.projectId,
+        this.pageNum,
+        this.pageSize,
+        this.searchValue
+      ).pipe(take(1))
+        .subscribe(data => {
+            this.testCases = data.elements;
+            this.totalElements = data.totalElements;
+          }
+        );
+    }
+    else {
+      this.testCaseService.findTestCaseByResultAndTitle(
+        this.projectId,
+        this.pageNum,
+        this.pageSize,
+        this.filterResult,
+        this.searchValue
+      ).pipe(take(1))
+        .subscribe(data => {
+            this.testCases = data.elements;
+            this.totalElements = data.totalElements;
+          }
+        );
+    }
   }
 
   private handleTestCases(): void {
-    this.testCaseService
-      .getTestCases(this.projectId, this.pageNum, this.pageSize)
-      .pipe(take(1))
-      .subscribe(data => {
-        this.testCases = data.elements;
-        this.totalElements = data.totalElements;
-      });
+    if (!this.filterResult) {
+      this.testCaseService
+        .getTestCases(this.projectId, this.pageNum, this.pageSize)
+        .pipe(take(1))
+        .subscribe(data => {
+          this.testCases = data.elements;
+          this.totalElements = data.totalElements;
+        });
+    } else {
+      this.testCaseService
+        .findTestCaseByResultAndTitle(this.projectId, this.pageNum, this.pageSize, this.filterResult, '')
+        .pipe(take(1))
+        .subscribe(data => {
+          this.testCases = data.elements;
+          this.totalElements = data.totalElements;
+        });
+    }
   }
 
   deactivateTestCase(id: number): void {
@@ -144,8 +171,25 @@ export class TestCaseListComponent implements OnInit {
     this.router.navigate(['projects', this.projectId, 'test-cases', id, 'general-test-scenario']);
   }
 
-  // TODO
-  filter(): void {
+  selectFilter(): void {
+    if (this.selectedFilter === 'Created test cases') {
+      this.filterResult = 'CREATED';
+    } else if (this.selectedFilter === 'Complete test cases') {
+      this.filterResult = 'COMPLETE';
+    } else if (this.selectedFilter === 'Failed test cases') {
+      this.filterResult = 'FAILED';
+    }
+    else {
+      this.filterResult = '';
+    }
+  }
 
+  getProjectTitle(): string {
+    if (this.currentProject.title === undefined) {
+      return '';
+    }
+    return this.currentProject.title.length > 22 ?
+      this.currentProject.title.slice(0, 20) + '...' :
+      this.currentProject.title;
   }
 }
