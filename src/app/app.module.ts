@@ -50,7 +50,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BarChartModule, LineChartModule, NumberCardModule, PieChartModule, PolarChartModule} from '@swimlane/ngx-charts';
 import { ParametersComponent } from './components/parameters/parameters.component';
 import { LastReportDetailsComponent } from './components/test-case/last-report-details/last-report-details.component';
-import {ActionsInTestScenarioComponent} from "./components/actions-in-test-scenario/actions-in-test-scenario.component";
+import {ActionsInTestScenarioComponent} from './components/actions-in-test-scenario/actions-in-test-scenario.component';
+import { ParametersEditComponent } from './components/parameters-edit/parameters-edit.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import {ActionsInTestScenarioComponent} from "./components/actions-in-test-scena
     EditWatchersComponent,
     RunDetailsComponent,
     ParametersComponent,
+    ParametersEditComponent,
   ],
   imports: [
     BrowserModule,

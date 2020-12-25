@@ -30,7 +30,7 @@ import {EditCalendarEventComponent} from './components/edit-calendar-event/edit-
 import {EditWatchersComponent} from './components/edit-watchers/edit-watchers.component';
 import {RunDetailsComponent} from './components/run-details/run-details.component';
 import {ParametersComponent} from './components/parameters/parameters.component';
-import {LastReportDetailsComponent} from './components/test-case/last-report-details/last-report-details.component';
+import {ParametersEditComponent} from './components/parameters-edit/parameters-edit.component';
 import {ActionsInTestScenarioComponent} from "./components/actions-in-test-scenario/actions-in-test-scenario.component";
 
 const routes: Routes = [
@@ -127,6 +127,11 @@ const routes: Routes = [
   {
     path: 'projects/:projectId/test-cases/:testCaseId/data-set/:id/parameters',
     component: ParametersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'projects/:projectId/test-cases/:testCaseId/data-set/:dataSetId/parameters/:id',
+    component: ParametersEditComponent,
     canActivate: [AuthGuard]
   },
   {
