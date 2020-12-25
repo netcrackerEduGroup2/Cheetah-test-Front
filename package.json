@@ -21,6 +21,7 @@
     "@angular/localize": "~10.1.2",
     "@angular/material": "^11.0.1",
     "@angular/platform-browser": "~10.1.2",
+    "@angular-devkit/build-angular": "^0.1100.5",
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
     "@fullcalendar/angular": "^5.4.0",

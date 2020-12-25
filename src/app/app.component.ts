@@ -21,25 +21,31 @@ export class AppComponent implements OnInit, OnDestroy{
   authenticationServiceSubscription: Subscription;
   url: string;
 
-  private notifications$: Observable<Notification[]>;
-  private newNotificationsCount$: Observable<number>;
+  notifications$: Observable<Notification[]>;
+  newNotificationsCount$: Observable<number>;
 
   constructor(private authenticationService: AuthService,
               private router: Router,
               private websocketService: WebsocketService,
               private profileService: ProfileService) {
+  }
+
+  ngOnInit(): void {
     this.authenticationServiceSubscription = this.authenticationService.user.subscribe(
       x => {
         this.user = x;
+        if (this.user !== null) {
+          this.subscribeOnNotifications();
+        }
       }
     );
     if (this.authenticationService.userValue !== null) {
-      profileService.getPhotoURL(this.authenticationService.userValue.email).subscribe(
+      this.profileService.getPhotoURL(this.authenticationService.userValue.email).subscribe(
         (elem) => this.url = elem ? elem : 'assets/sidebar_images/img_example.jpg');
     }
   }
 
-  ngOnInit(): void {
+  subscribeOnNotifications(): void {
     this.notifications$ = this.websocketService.on<Notification[]>(WS.ON.NOTIFICATIONS);
     this.newNotificationsCount$ = this.notifications$.pipe(
       map(
