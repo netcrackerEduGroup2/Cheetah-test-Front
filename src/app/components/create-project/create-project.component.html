@@ -1,17 +1,17 @@
-<div (click)="cleanList()">
-  <div class="main-content">
-    <div class="row mt-5">
-      <div class="col mt-4">
-        <h2 class="display-4 black">Project Configuration</h2>
-      </div>
-      <div class="col mt-5">
-        <button class="options" [routerLink]="['/projects']">
-          Back to Projects
-        </button>
-      </div>
+<div class="container-fluid" (click)="cleanList()">
+
+  <div class="row mt-5">
+    <div class="col mt-4">
+      <h2 class="display-4 black">Project Configuration</h2>
     </div>
+    <div class="col mt-5">
+      <button class="options" [routerLink]="['/projects']">
+        Back to Projects
+      </button>
+    </div>
+
   </div>
-  <div class="container-sm">
+  <div class="container-sm mt-5">
     <h5 class="text-success text-center mb-1">{{successMessage}}</h5>
     <h5 class="text-danger text-center mb-1">{{errorMessage}}</h5>
     <form [formGroup]="createProjectForm" (ngSubmit)="onSubmit()">

@@ -19,15 +19,15 @@
 <div class="mt-5 row" *ngIf="compounds.length !== 0">
   <div class="custom-table black">
     <div class="row thead">
-      <div class="col-2">Title</div>
-      <div class="col-4">Description</div>
+      <div class="col-3">Title</div>
+      <div class="col-5">Description</div>
       <div class="col-4" *ngIf="isAdmin">Options</div>
     </div>
 
     <div class="mt-5 stripped">
       <div class="row mt-2" *ngFor="let compound of compounds">
-        <div class="col-2">{{compound.title}}</div>
-        <div class="col-4">{{compound.description}}</div>
+        <div class="col-3">{{compound.title}}</div>
+        <div class="col-5">{{compound.description}}</div>
         <div class="col-2 pt-2" *ngIf="isAdmin">
           <button class="options-table ml-1" (click)="remove(compound.id)">
             Remove
