@@ -17,7 +17,7 @@
             <button class="delete-button" (click)="deleteNotification(this.newNotification.id)">Delete</button>
           </div>
           <div class="col-lg-11 col-md-11 col-sm-11 pt-2">
-            {{newNotification.description}} Click on the link below to see more information:
+            {{newNotification.description}}
           </div>
           <div class="col-lg-11 col-md-11 col-sm-11 pt-2">
             <button class="options-table" (click)="goToRunDetails(newNotification.testCaseId, newNotification.htcId,newNotification.projectId, newNotification.notificationStatus)">
@@ -43,7 +43,7 @@
             <button class="delete-button" (click)="deleteNotification(this.oldNotification.id)">Delete</button>
           </div>
           <div class="col-lg-11 col-md-11 col-sm-11 pt-2">
-            {{oldNotification.description}} Click on the link below to see more information:
+            {{oldNotification.description}}
           </div>
           <div class="col-lg-11 col-md-11 col-sm-11 pt-2">
             <button class="options-table" (click)="goToRunDetails(oldNotification.testCaseId,oldNotification.htcId,oldNotification.projectId, oldNotification.notificationStatus)">
