@@ -16,15 +16,15 @@
   <div class="mt-5 row" *ngIf="watchers.length !== 0">
     <div class="custom-table black">
       <div class="row thead">
-        <div class="col-4">Email</div>
-        <div class="col-2">Role</div>
+        <div class="col-5">Email</div>
+        <div class="col-3">Role</div>
         <div class="col-3">Name</div>
       </div>
       <div class="mt-5 stripped">
         <div cdkDropList (cdkDropListDropped)="drop($event)">
           <div class="row mt-2" cdkDrag *ngFor="let watcher of watchers">
-            <div class="col-4">{{watcher.email}}</div>
-            <div class="col-2">{{watcher.name}}</div>
+            <div class="col-5">{{watcher.email}}</div>
+            <div class="col-3">{{watcher.name}}</div>
             <div class="col-3">{{watcher.role}}</div>
             <div class="col-1">
               <img src="assets/sidebar_images/remove.png"

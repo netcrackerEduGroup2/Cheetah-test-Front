@@ -18,7 +18,6 @@ export class EditWatchersComponent implements OnInit, OnDestroy {
   errorMessage: string;
   loading = false;
   project: Project;
-  projectDescription: string;
   watchers: UserDto[] = [];
   availableWatchers: UserDto[] = [];
   projectId: number;
