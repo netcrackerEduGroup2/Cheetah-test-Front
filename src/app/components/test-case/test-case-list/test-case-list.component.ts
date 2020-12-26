@@ -112,10 +112,13 @@ export class TestCaseListComponent implements OnInit {
   }
 
   deactivateTestCase(id: number): void {
-    this.runTestCaseIdsList = this.runTestCaseIdsList.filter(i => i !== id);
-    this.testCaseService.deactivateTestCase(id)
-      .pipe(take(1))
-      .subscribe(() => this.showTestCaseList());
+    const deactivate = confirm('Are you sure? It will be impossible to activate test case.');
+    if (deactivate) {
+      this.runTestCaseIdsList = this.runTestCaseIdsList.filter(i => i !== id);
+      this.testCaseService.deactivateTestCase(id)
+        .pipe(take(1))
+        .subscribe(() => this.showTestCaseList());
+    }
   }
 
   search(value: string): void {
