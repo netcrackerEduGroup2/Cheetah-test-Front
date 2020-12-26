@@ -42,10 +42,14 @@
             <td>
               <button class="options" (click)="createParameter()">Create</button>
             </td>
+            <td></td>
           </tr>
           <tr *ngFor="let parameter of parameters">
             <td>{{parameter.value}}</td>
             <td>{{parameter.type}}</td>
+            <td>
+              <button class="options" (click)="editParameter(parameter)">Edit</button>
+            </td>
             <td>
               <button class="options" (click)="deleteParameter(parameter.id)">Delete</button>
             </td>

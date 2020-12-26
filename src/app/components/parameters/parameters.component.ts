@@ -117,4 +117,13 @@ export class ParametersComponent implements OnInit {
     this.listParameters();
   }
 
+  editParameter(parameter: Parameter): void{
+    this.router.navigate(['projects', this.theProjectId, 'test-cases', this.theTestCaseId, 'data-set', this.dataSetId, 'parameters', parameter.id], {
+      queryParams: {
+        dataSetTitle: this.dataSetTitle,
+        value: parameter.value,
+        type: parameter.type,
+      }
+    });
+  }
 }

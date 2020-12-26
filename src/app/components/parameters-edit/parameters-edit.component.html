@@ -1,0 +1,48 @@
+<div class="container-fluid my-5">
+
+  <div class="row">
+    <div class="col">
+      <h2 class="display-5 h1-black">Edit {{dataSetTitle}}</h2>
+    </div>
+    <div class="col back">
+      <button class="options" (click)="backToParameters()">
+        Back to Parameters
+      </button>
+    </div>
+
+  </div>
+  <div class="container-sm">
+    <form [formGroup]="createParametersForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="value.invalid && (value.dirty || value.touched)" class="text-danger text-center mb-1">
+        <div *ngIf="value.errors.required">
+          <h5>Name is required</h5>
+        </div>
+        <div *ngIf="value.errors.maxlength">
+          <h5>Max length of name is 100 chars</h5>
+        </div>
+        <div *ngIf="value.errors.minlength">
+          <h5>Min length of name is 3 chars</h5>
+        </div>
+      </div>
+      <div class="form-group row">
+        <h5 class="text-danger text-center mb-1">{{errorMessage}}</h5>
+        <label for="value" class="col-sm-5 col-form-label">Value: </label>
+        <div class="col-sm-7">
+          <input type="text" class="form-control" formControlName="value" id="value">
+        </div>
+        <label for="type" class="col-sm-5 col-form-label">Type: </label>
+        <div class="col-sm-7">
+          <input type="text" class="form-control" formControlName="type" id="type">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7 text-center mx-auto my-4">
+          <button class="options" [disabled]="!createParametersForm.valid">Save
+            <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
