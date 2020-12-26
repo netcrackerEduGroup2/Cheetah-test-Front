@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy{
     );
     if (this.authenticationService.userValue !== null) {
       this.profileService.getPhotoURL(this.authenticationService.userValue.email).subscribe(
-        (elem) => this.url = elem ? elem : 'assets/sidebar_images/img_example.jpg');
+        (elem) => this.url = elem ? elem : 'assets/sidebar_images/anonymous.jpg');
     }
   }
 
@@ -90,6 +90,6 @@ export class AppComponent implements OnInit, OnDestroy{
   }
   loadPhoto(): void {
     this.profileService.getPhotoURL(this.authenticationService.userValue.email).subscribe(
-      (elem) => this.url = elem ? elem : 'assets/sidebar_images/img_example.jpg');
+      (elem) => this.url = elem ? elem : 'assets/sidebar_images/anonymous.jpg');
   }
 }
