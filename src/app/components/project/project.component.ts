@@ -73,13 +73,16 @@ export class ProjectComponent implements OnInit {
   }
 
   archive(id: number): void {
-    this.projectService.archive(id)
-      .pipe(take(1))
-      .subscribe(
-        () => {
-          this.listProjects();
-        }
-      );
+    const archive = confirm('Are you sure? It will be impossible to unzip the project.');
+    if (archive) {
+      this.projectService.archive(id)
+        .pipe(take(1))
+        .subscribe(
+          () => {
+            this.listProjects();
+          }
+        );
+    }
   }
 
   edit(id: number): void {
