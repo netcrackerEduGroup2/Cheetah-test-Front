@@ -136,7 +136,6 @@ export class TestCaseListComponent implements OnInit {
       this.isRun = true;
       window.setTimeout(() =>
         $('.alert-success').fadeTo(500, 0).slideUp(500, () => this.isRun = false), 4000);
-      console.log(this.runTestCaseIdsList);
       this.testCaseService.runTestCases(this.runTestCaseIdsList).subscribe();
     }
   }
