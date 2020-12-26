@@ -46,6 +46,9 @@ export class DashboardComponent implements OnInit {
   ) {
     this.user = this.authenticationService.userValue;
     this.isAdmin = this.user.role === 'ADMIN';
+  }
+
+  ngOnInit(): void {
     this.dashboardService.getTotalUsers().subscribe(
       data => this.totalUsers = data
     );
@@ -60,11 +63,10 @@ export class DashboardComponent implements OnInit {
       .subscribe(data => this.totalTodayProjects = data);
     this.dashboardService.getProjectActivity().subscribe(
       data => {
-        const s = data.series;
         this.projectActivity = [
           {
             name: 'Projects',
-            series: s
+            series: data
           }
         ];
       }
@@ -118,16 +120,8 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-
-  }
-
   goToProject(projectId: number): void {
     this.router.navigate(['projects', projectId, 'test-cases']);
-  }
-
-  selectTestCaseStats(projectId: number): void {
-
   }
 
   onUserProjectSelected(projectId: number): void {
