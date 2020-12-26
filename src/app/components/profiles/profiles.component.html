@@ -1,25 +1,29 @@
-<div class="main_content">
+
   <div class="text-center">
-    <h1 class="display-4 black mt-lg-5" [style]="styleDeactivate">Profiles</h1>
+    <h1 class="display-4 black mt-lg-5"
+        [style]="styleDeactivate">
+      Profiles
+    </h1>
   </div>
-  <div class="table-body" [style]="styleDeactivate">
+  <div class="" [style]="styleDeactivate">
     <div class="container  p-lg-5">
       <!-- Head -->
-      <div class="row ml-5">
+      <div class="row">
         <div *ngFor="let head of headElements"
-             class="col-lg-3 center">
+             class="col-lg-3 center black text-uppercase font-weight-bold">
           {{head}}
         </div>
       </div>
-      <div class="row ml-5">
+      <div class="row">
         <div class="col-lg-3">
           <input type="text" (keyup)="usernameAndEmailOnInput($event)"
-                 class="table_elem" [(ngModel)]="searchUsername"
+                 class="table_elem font-italic" [(ngModel)]="searchUsername"
                  placeholder="Search Username"
                  (click)="clickSearchEmailUsername()">
         </div>
         <div class="col-lg-3">
-          <input type="text" (keyup)="usernameAndEmailOnInput($event)" class="table_elem"
+          <input type="text" (keyup)="usernameAndEmailOnInput($event)"
+                 class="table_elem font-italic"
                  [(ngModel)]="searchEmail" placeholder="Search Email"
                  (click)="clickSearchEmailUsername()">
         </div>
@@ -27,7 +31,7 @@
           <label>
             <select [(ngModel)]="role"
                     (click)="chooseSearchRole()"
-                    class="choose-role">
+                    class="choose-role font-italic">
               <option value="ALL">All roles</option>
               <option value="ADMIN">Admin</option>
               <option value="MANAGER">Manager</option>
@@ -39,20 +43,20 @@
       <!-- Users -->
       <div *ngFor="let el of elements.users
 				let i = index" [style.background-color]="rowColorName[i]"
-           class="row ml-5">
-        <div class="col-lg-3">
+           class="row">
+        <div class="col-lg-3 my-auto">
           <label>
             <input type="text" [(ngModel)]="el.name" class="table_elem"
                    [disabled]="disabledPersonalData[i]">
           </label>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 my-auto">
           <label>
             <input type="text" [(ngModel)]="el.email" class="table_elem"
                    [disabled]="disabledPersonalData[i]">
           </label>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 my-auto">
           <label>
             <select [(ngModel)]="el.role" [disabled]="disabledPersonalData[i]"
                     class="table_elem choose-role-table">
@@ -62,13 +66,13 @@
             </select>
           </label>
         </div>
-        <div class="table-elem">
+        <div class="col-lg-1 my-auto">
           <input type="button" (click)="editPersonalInformation(i)" [hidden]="isAdmin"
-                 [(ngModel)]="textOnButtonUpdate[i]" class="button_user">
+                 [(ngModel)]="textOnButtonUpdate[i]" class="bth btn-lg cheetah-color full-width border-white">
         </div>
-        <div class="table-elem">
+        <div class="col-lg-2 my-auto">
           <input type="button" (click)="pressDelete(i)" [hidden]="isAdmin"
-                 [(ngModel)]="deleteButton" class="button_user">
+                 [(ngModel)]="deleteButton" class="bth danger-color btn-lg full-width border-white">
         </div>
       </div>
       <div class="warning-result">
@@ -92,12 +96,10 @@
     <input type="button" (click)="confirmClose()" value="Close"
            class="button-confirm button-close">
     <input type="button" (click)="confirmAdminPassword()" [value]="textAgreeConfirmPanel"
-           class="button-confirm button-submit">
+           class="button-confirm button-submit danger-color">
   </div>
   <div class="row mt-10">
-    <div class="col-md-10"></div>
+    <div class="col-lg-9"></div>
     <input type="button"  (click)="createUser()" [hidden]="isAdmin"
-           class="button_user col-md-1" value="Create User">
+           class="col-md-1 btn-success border-white border-rad-lrg" value="Create User" [style]="styleDeactivate">
   </div>
-
-</div>

@@ -8,11 +8,28 @@
   text-align: center;
 }
 
+.border-rad-lrg {
+  border-radius: 25% 5%;
+}
+
 .main_content {
   margin-left: 250px;
   margin-right: 30px;
   padding: 10px;
   color: black;
+}
+.cheetah-color {
+  color: white;
+  background-color: #BD7D42;
+}
+
+.border-white {
+  border: 2px solid white;
+}
+
+
+.cheetah-color:hover {
+  background-color: #d9b38c;
 }
 
 .button_user {
@@ -65,8 +82,20 @@
 }
 
 .button-submit {
-  background-color: #CC0000;
   margin-top: 9vh;
+}
+
+.danger-color {
+  color: white;
+  background-color: #CC0000;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.danger-color:hover {
+  background-color: #FF0000;
 }
 
 .button-close {

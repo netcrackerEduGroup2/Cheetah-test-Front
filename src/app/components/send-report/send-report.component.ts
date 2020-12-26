@@ -72,7 +72,7 @@ export class SendReportComponent implements OnInit {
   onSubmit(): void {
     this.successMessage = '';
     this.loading = true;
-    this.sendReportService.sendReports(this.addedEmails, this.testCaseId, this.projectId)
+    this.sendReportService.sendReports(this.addedEmails, this.testCaseId, this.projectId, this.idHTC)
       .pipe(take(1))
       .subscribe(
         data => {
