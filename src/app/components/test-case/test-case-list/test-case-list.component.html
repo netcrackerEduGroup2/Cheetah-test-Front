@@ -2,20 +2,24 @@
   <div class="container-fluid pb-5">
     <div class="row">
       <div class="col-lg-auto mt-3">
-        <h3 class="d-inline-block p-0" style="color: black">{{currentProject.title}}</h3>
+        <h3 class="d-inline-block p-0" style="color: black">
+          {{getProjectTitle()}}
+        </h3>
       </div>
       <div class="col-lg-6 col-md-10">
         <div class="md-form active-black mb-3 mt-3 p-1">
           <input #searchInput class="form-control search" (keyup.enter)="search(searchInput.value)" placeholder="Search" aria-label="Search">
         </div>
       </div>
+      <div>
+        <button type="button" class="mt-3 options" (click)="search(searchInput.value)">Search</button>
+      </div>
       <div class="col-lg-8 col-md-12 p-0">
-        <select class="p-1 filter options">
+        <select [(ngModel)]="selectedFilter" (click)="selectFilter()" class="p-1 filter options">
           <option selected="selected">
             Filter by
           </option>
-          <option>CREATED test cases</option>
-          <option>FAILED test cases </option>
+          <option *ngFor="let filter of filters">{{filter | titlecase}} test cases</option>
         </select>
         <button type="button" class="options m-1" (click)="create()">Create new test case</button>
         <button (click)="runTestCases()" type="button" class="options m-1">Run</button>
@@ -32,9 +36,9 @@
       <caption></caption>
       <thead>
       <tr>
-        <th scope="col">Description</th>
+        <th scope="col" style="width: 15em;" class="text-center">Description</th>
         <th scope="col">Last Result</th>
-        <th scope="col" class="w-25">Add to Test</th>
+        <th scope="col" style="width: 10em;">Add to Test</th>
         <th scope="col">Options</th>
       </tr>
       </thead>
@@ -47,7 +51,7 @@
                    (change)="handleRunTestCases(testCase.id)">
           </div>
         </td>
-        <td class="row justify-content-lg-center">
+        <td class="row justify-content-lg-center w-auto">
           <div class="row">
             <button type="button" class="options mt-1" (click)="viewDataSet(testCase.id)">Data Set</button>
             <button type="button" class="options mt-1" (click)="viewTestScenario(testCase.id)">Test Scenario</button>
