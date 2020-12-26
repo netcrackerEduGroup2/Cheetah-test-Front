@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     this.email = authService.userValue.email;
     this.role = authService.userValue.role;
     profileService.getPhotoURL(this.email).subscribe(
-      (elem) => this.url = elem ? elem : 'assets/sidebar_images/img_example.jpg');
+      (elem) => this.url = elem ? elem : 'assets/sidebar_images/anonymous.jpg');
   }
 
   fileInput(event: any): void {
