@@ -163,7 +163,9 @@ export class TestCaseListComponent implements OnInit {
   }
 
   getTestCaseHistory(id: number): void {
-    this.router.navigate(['projects', this.projectId, 'test-cases', id, 'history']);
+    this.router.navigate(['projects', this.projectId, 'test-cases', id, 'history'],
+    {queryParams:
+    {title: this.testCases.find((testCase) => testCase.id === id).title}});
   }
 
   viewDataSet(id: number): void {

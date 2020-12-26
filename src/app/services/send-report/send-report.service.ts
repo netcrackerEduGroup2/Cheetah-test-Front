@@ -11,8 +11,8 @@ export class SendReportService {
   constructor(private http: HttpClient) {
   }
 
-  sendReports(emails: string[], idTestCase: number, idProject: number): Observable<any> {
-    const url = `${environment.apiUrl}/api/projects/${idProject}/test-cases/${idTestCase}/send-generate-report`;
+  sendReports(emails: string[], idTestCase: number, idProject: number, idHTC: number): Observable<any> {
+    const url = `${environment.apiUrl}/api/projects/${idProject}/test-cases/${idTestCase}/send-generate-report/${idHTC}`;
     return this.http.post<any>(url, emails);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from '../../services/auth/auth.service';
 import {GetHistoryTestCase, HistoryService} from '../../services/history/history.service';
