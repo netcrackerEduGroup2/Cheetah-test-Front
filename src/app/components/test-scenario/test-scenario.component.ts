@@ -29,6 +29,9 @@ export class TestScenarioComponent implements OnInit {
   constructor(private authenticationService: AuthService,
               private router: Router,
               private testScenarioService: TestScenarioService) {
+  }
+
+  ngOnInit(): void {
     this.authenticationService.user
       .pipe(take(1))
       .subscribe(
@@ -36,9 +39,6 @@ export class TestScenarioComponent implements OnInit {
           this.user = x;
         }
       );
-  }
-
-  ngOnInit(): void {
     this.listTestScenarios();
   }
 

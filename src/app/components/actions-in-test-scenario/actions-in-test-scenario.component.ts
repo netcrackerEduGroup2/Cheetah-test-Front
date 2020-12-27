@@ -108,7 +108,7 @@ export class ActionsInTestScenarioComponent implements OnInit, OnDestroy {
       .subscribe(
         (data) => {
           if (data) {
-            this.successMessage = 'Order has been successfully saved';
+            this.successMessage = 'Parameters has been successfully set';
           } else {
             this.errorMessage = 'Error';
           }
