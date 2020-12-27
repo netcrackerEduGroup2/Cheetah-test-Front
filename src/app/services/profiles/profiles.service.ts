@@ -11,14 +11,7 @@ import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 })
 export class ProfilesService {
 
-  UserOnView: User;
-
   constructor(private http: HttpClient) { }
-
-  getUser(pageSize: number, pageNum: number): Observable<GetUser> {
-    const url = `${environment.apiUrl}/api/user/profiles?size=${pageSize}&page=${pageNum}`;
-    return this.http.get<GetUser>(url);
-  }
 
   getSearchUser(name: string, email: string, role: string, pageSize: number,
                 pageNum: number ): Observable<GetUser>{
