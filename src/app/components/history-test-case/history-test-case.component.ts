@@ -13,11 +13,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class HistoryTestCaseComponent implements OnInit {
 
   pageSize = 8;
-
   numPage = 1;
-
   testCase: GetHistoryTestCase;
-
   emptyRow = [];
   projectId: number;
   testCaseId: number;
