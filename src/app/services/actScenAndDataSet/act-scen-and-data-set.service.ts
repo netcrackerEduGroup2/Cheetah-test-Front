@@ -31,11 +31,6 @@ export class ActScenAndDataSetService {
     return this.http.get<Parameter[]>(url);
   }
 
-  getAllParamByIdTestCase(theTestCaseId: number): Observable<Parameter[]> {
-    const url = `${environment.apiUrl}/api/parameters/all/${theTestCaseId}/test-case`;
-    return  this.http.get<Parameter[]>(url);
-  }
-
   save(actScenarios: ActScenario[], parameters: Parameter[]): Observable<any>{
     const url = `${environment.apiUrl}/api/test-scenarios/act-scenarios`;
 

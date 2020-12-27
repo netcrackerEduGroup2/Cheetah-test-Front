@@ -72,16 +72,6 @@ export class ActionsInTestScenarioComponent implements OnInit, OnDestroy {
       );
   }
 
-  private listParameters(): void {
-    this.actScenAndDataSetService.getAllParamByIdTestCase(this.theTestCaseId)
-      .pipe(take(1))
-      .subscribe(
-        data => {
-          this.parameters = data;
-        }
-      );
-  }
-
   addToList(parameter: Parameter): void {
     this.addedParameters.push(parameter);
   }
