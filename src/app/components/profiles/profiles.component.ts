@@ -17,49 +17,24 @@ export class ProfilesComponent implements OnInit {
   searchEmail = '';
   searchRole = '';
   existUser = '';
-
   adminPassword = '';
-
   saveLastEmailEdit = '';
-
   numPage = 1;
   pageSize = 10;
-
-  rowColor = false;
   rowColorName: Array<string>;
-
   deleteButton = 'Deactivate';
-
-  relationElemSearch: Array<number>;
-
   textOnButtonUpdate: Array<string>;
-
   disabledPersonalData: Array<boolean>;
-
   options = ['Engeneer', 'Manager'];
-
   role = 'ALL';
-
-  countries = [1, 2, 3];
-
   elements: GetUser;
-
-  outputTable = [];
-
   headElements = ['Username', 'Email', 'Role'];
-
   user: User;
-
   styleDeactivate = '';
-
   disabledPasswordAdmin = true;
-
   indexUseToDeactivate = 0;
-
   isAdmin = true;
-
   isDeactivate = false;
-
   textAgreeConfirmPanel: string;
 
   pageChange(page: number): void {
@@ -199,8 +174,7 @@ export class ProfilesComponent implements OnInit {
       .subscribe(elem => { this.elements = elem; });
   }
 
-  createUser(): void {
-    this.router.navigate(['sign-up']);
+  createUser(): Promise<boolean> {
+    return this.router.navigate(['sign-up']);
   }
-
 }

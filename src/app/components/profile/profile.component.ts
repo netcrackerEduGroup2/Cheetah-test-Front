@@ -16,8 +16,6 @@ export class ProfileComponent implements OnInit {
   email: string;
   role: string;
 
-  fileToUpload: File = null;
-
   url: string;
 
   constructor(private authService: AuthService,

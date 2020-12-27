@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class HistoryTestCaseComponent implements OnInit {
 
-  pageSize = 10;
+  pageSize = 8;
 
   numPage = 1;
 
