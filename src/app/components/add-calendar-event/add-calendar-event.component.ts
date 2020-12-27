@@ -20,7 +20,6 @@ export class AddCalendarEventComponent implements OnInit {
   dateStart: string;
   createEventForm: FormGroup;
   loading = false;
-  createEventSubscription: Subscription;
   testCases: TestCaseDate[] = [];
   authenticationServiceSubscription: Subscription;
   searchTestCaseSubscription: Subscription;
@@ -44,7 +43,7 @@ export class AddCalendarEventComponent implements OnInit {
     this.querySubscription = route.queryParams.subscribe(
       (queryParam: any) => {
         this.dateStart = queryParam.dateStart;
-        if(this.dateStart.length === 10){
+        if (this.dateStart.length === 10){
           this.dateStart = this.dateStart + 'T00:00:00';
         }
       }
@@ -64,11 +63,7 @@ export class AddCalendarEventComponent implements OnInit {
 
   addToDto(testCase: TestCaseDate): void{
     this.dateDto.testCaseId = testCase.id;
-    if(testCase.repeatable == null) {
-      this.dateDto.repeatable = false;
-    } else {
-      this.dateDto.repeatable = true;
-    }
+    this.dateDto.repeatable = testCase.repeatable != null;
     this.dateDto.executionCronDate = this.dateStart;
     $('#testCase_input').val(testCase.title);
   }
@@ -78,10 +73,5 @@ export class AddCalendarEventComponent implements OnInit {
       .createDates(this.dateDto)
       .subscribe();
     this.router.navigate(['/calendar']);
-  }
-
-
-  onSubmit(): void {
-
   }
 }

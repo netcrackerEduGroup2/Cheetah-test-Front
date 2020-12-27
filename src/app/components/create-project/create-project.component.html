@@ -62,7 +62,7 @@
           <ul *ngIf="users" class="search-result">
             <li *ngFor="let user of users | slice:0:9">
               <a (click)="addToList(user)" target="_blank">
-                {{ user.email }}
+                {{user.name + ' ' + user.email}}
               </a>
             </li>
           </ul>

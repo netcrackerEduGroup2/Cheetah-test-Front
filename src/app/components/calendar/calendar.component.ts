@@ -1,11 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {
-  Calendar,
   DateSelectArg,
   CalendarOptions,
   EventClickArg,
   FullCalendarComponent,
-  EventApi,
 } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -16,8 +14,6 @@ import {Subscription} from 'rxjs';
 import {CalendarService} from '../../services/calendar/calendar.service';
 import {User} from '../../models/user/user';
 import {TestCaseDate} from '../../models/date/test-case-date';
-
-declare var $: any;
 
 @Component({
   selector: 'app-calendar',

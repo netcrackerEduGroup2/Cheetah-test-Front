@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {Parameter} from '../../models/parameter/parameter';
-import {DataSet} from "../../models/data-set/data-set";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,10 @@ export class EditDataSetService {
     return this.http.get<GetResponseParameters>(url);
   }
 
-  searchParameters(thePageNumber: number, theDataSetId: number, thePageSize: number, theKeyword: string): Observable<GetResponseParameters> {
+  searchParameters(thePageNumber: number,
+                   theDataSetId: number,
+                   thePageSize: number,
+                   theKeyword: string): Observable<GetResponseParameters> {
     const url = `${environment.apiUrl}/api/parameters/${theDataSetId}?&type=${theKeyword}&size=${thePageSize}&page=${thePageNumber}`;
     return this.http.get<GetResponseParameters>(url);
   }
@@ -27,12 +29,13 @@ export class EditDataSetService {
     const url = `${environment.apiUrl}/api/parameters?&id=${id}`;
     return this.http.delete<GetResponseParameters>(url);
   }
+
   createParameter(parameter: Parameter): Observable<any> {
     const url = `${environment.apiUrl}/api/parameters`;
     return this.http.post<Parameter>(url, parameter);
   }
 
-  editParameter(parameter: Parameter): Observable<any>{
+  editParameter(parameter: Parameter): Observable<any> {
     const url = `${environment.apiUrl}/api/parameters/${parameter.id}`;
     return this.http.put<any>(url, parameter);
   }
