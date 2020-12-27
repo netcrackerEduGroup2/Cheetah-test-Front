@@ -44,22 +44,24 @@ export class EditCalendarEventComponent implements OnInit {
     );
   }
 
+  get newTime(): any {
+    return this.editEventForm.get('newTime');
+  }
+
+  get newDate(): any {
+    return this.editEventForm.get('newDate');
+  }
+
   ngOnInit(): void {
     $('#newDate').min = Date.now();
     this.editEventForm = this.formBuilder.group({
-      name: new FormControl('',
-        [Validators.required,
-          Validators.maxLength(100),
-          Validators.minLength(3)]),
-      description: new FormControl('',
-        [Validators.required, Validators.maxLength(300)])
+      newDate: new FormControl(''),
+      newTime: new FormControl('')
     });
   }
 
   onSubmit(): void {
-    const newDate = new Date($('#newDate').val());
-    const newTime = document.querySelector('input[type="time"]');
-    this.dateDto.executionCronDate = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate() + 'T' + newTime.value + ':00';
+    this.dateDto.executionCronDate = this.newDate.value + 'T' + this.newTime.value + ':00';
     this.datesSubscription = this.calendarService
       .editEvent(this.dateDto).subscribe();
     this.router.navigate(['/calendar']);
