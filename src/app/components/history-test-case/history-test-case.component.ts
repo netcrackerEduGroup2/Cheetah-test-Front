@@ -18,7 +18,6 @@ export class HistoryTestCaseComponent implements OnInit {
 
   testCase: GetHistoryTestCase;
 
-  styleFailedOrCompleted: string[];
   emptyRow = [];
   projectId: number;
   testCaseId: number;
@@ -41,13 +40,6 @@ export class HistoryTestCaseComponent implements OnInit {
       this.testCaseId, this.pageSize, this.numPage)
       .subscribe(elem => {
         this.testCase = elem;
-        this.styleFailedOrCompleted = new Array<string>
-        (this.testCase.historyTestCases.length).fill('color: green;', 0, this.testCase.historyTestCases.length);
-        for (let i = 0; i < this.styleFailedOrCompleted.length; i++){
-          if (this.testCase.historyTestCases[i].result === 'FAILED'){
-            this.styleFailedOrCompleted[i] = 'color: red;';
-          }
-        }
         this.emptyRow = new Array(this.pageSize - this.testCase.historyTestCases.length + 3);
       });
   }
@@ -57,13 +49,6 @@ export class HistoryTestCaseComponent implements OnInit {
       this.pageSize, page)
       .subscribe(elem => {
         this.testCase = elem;
-        this.styleFailedOrCompleted = new Array<string>
-        (this.testCase.historyTestCases.length).fill('color: green;', 0, this.testCase.historyTestCases.length);
-        for (let i = 0; i < this.styleFailedOrCompleted.length; i++){
-          if (this.testCase.historyTestCases[i].result === 'FAILED'){
-            this.styleFailedOrCompleted[i] = 'color: red;';
-          }
-        }
         this.emptyRow = new Array(this.pageSize - this.testCase.historyTestCases.length + 3);
       });
   }
@@ -78,8 +63,8 @@ export class HistoryTestCaseComponent implements OnInit {
       });
   }
 
-  goBack(): void {
-    this.router.navigate(['/projects', this.projectId, 'test-cases']);
+  goBack(): Promise<boolean> {
+    return this.router.navigate(['/projects', this.projectId, 'test-cases']);
   }
 
   ngOnInit(): void {
