@@ -19,7 +19,7 @@ export class EditDataSetComponent implements OnInit, OnDestroy {
   theProjectId: number;
   testCaseId: number;
   createDataSetForm: FormGroup;
-  createTestCaseSubscription: Subscription;
+  createDataSetSubscription: Subscription;
   dataSetSubscription: Subscription;
   querySubscription: Subscription;
   authenticationServiceSubscription: Subscription;
@@ -85,8 +85,8 @@ export class EditDataSetComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.createTestCaseSubscription) {
-      this.createTestCaseSubscription.unsubscribe();
+    if (this.createDataSetSubscription) {
+      this.createDataSetSubscription.unsubscribe();
       this.querySubscription.unsubscribe();
     }
   }

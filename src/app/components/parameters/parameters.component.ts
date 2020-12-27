@@ -29,7 +29,6 @@ export class ParametersComponent implements OnInit {
   thePageSize = 5;
   theTotalElements: number;
   parameters: Parameter[] = [];
-  parameter: Parameter = null;
   theProjectId: number;
 
   constructor(private authenticationService: AuthService,
@@ -77,6 +76,8 @@ export class ParametersComponent implements OnInit {
     parameter.type = this.parameterType;
     parameter.idDataSet = this.dataSetId;
     this.parametersService.createParameter(parameter).subscribe();
+    this.parameterType = '';
+    this.parameterValue = '';
     this.listParameters();
   }
 
@@ -118,11 +119,12 @@ export class ParametersComponent implements OnInit {
   }
 
   editParameter(parameter: Parameter): void{
-    this.router.navigate(['projects', this.theProjectId, 'test-cases', this.theTestCaseId, 'data-set', this.dataSetId, 'parameters', parameter.id], {
-      queryParams: {
-        dataSetTitle: this.dataSetTitle,
-        value: parameter.value,
-        type: parameter.type,
+    this.router.navigate(['projects', this.theProjectId, 'test-cases', this.theTestCaseId, 'data-set', this.dataSetId, 'parameters', parameter.id],
+      {
+        queryParams: {
+          dataSetTitle: this.dataSetTitle,
+          value: parameter.value,
+          type: parameter.type,
       }
     });
   }

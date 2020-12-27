@@ -94,6 +94,8 @@ export class DataSetComponent implements OnInit {
     dataset1.description = this.dataSetDescription;
     dataset1.idTestCase = this.theTestCaseId;
     this.dataSetService.createDataSet(dataset1).subscribe();
+    this.dataSetDescription = '';
+    this.dataSetTitle = '';
     this.listDataSets();
   }
 
@@ -117,7 +119,8 @@ export class DataSetComponent implements OnInit {
   }
 
   goToParameters(dataset: DataSet): void {
-    this.router.navigate(['projects', this.theProjectId, 'test-cases', this.theTestCaseId, 'data-set', dataset.id, 'parameters'], {queryParams: {title: dataset.title}});
+    this.router.navigate(['projects', this.theProjectId, 'test-cases', this.theTestCaseId, 'data-set', dataset.id, 'parameters'],
+      {queryParams: {title: dataset.title}});
   }
 
   goBack(): void {

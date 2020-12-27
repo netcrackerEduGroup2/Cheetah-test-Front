@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user/user';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
@@ -20,7 +20,6 @@ export class ParametersEditComponent implements OnInit{
   theProjectId: number;
   testCaseId: number;
   createParametersForm: FormGroup;
-  createParameterSubscription: Subscription;
   parameterSubscription: Subscription;
   querySubscription: Subscription;
   authenticationServiceSubscription: Subscription;
@@ -88,6 +87,7 @@ export class ParametersEditComponent implements OnInit{
   }
 
   backToParameters(): void{
-    this.router.navigate(['projects', this.theProjectId, 'test-cases', this.testCaseId, 'data-set', this.dataSetId, 'parameters'], {queryParams: {title: this.dataSetTitle}});
+    this.router.navigate(['projects', this.theProjectId, 'test-cases', this.testCaseId, 'data-set', this.dataSetId, 'parameters'],
+      {queryParams: {title: this.dataSetTitle}});
   }
 }

@@ -67,6 +67,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       .pipe(first())
       .subscribe({
           next: data => {
+            console.log(data);
             switch (data) {
               case environment.success: {
                 this.user = new User();
